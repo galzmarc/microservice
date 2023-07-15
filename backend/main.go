@@ -23,9 +23,7 @@ func fetchPokemonID(pokemonID string) (*http.Response, error) {
 	res, err := http.Get(url)
 	if err != nil {
 		return nil, err
-
 	}
-	defer res.Body.Close()
 	return res, nil
 }
 
@@ -35,7 +33,6 @@ func fetchPokemon(res *http.Response) (*Pokemon, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
 	return &pokemon, nil
 }
 
@@ -55,8 +52,6 @@ func main() {
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 			return
 		}
-
-		defer res.Body.Close()
 
 		pokemon, err := fetchPokemon(res)
 		if err != nil {
