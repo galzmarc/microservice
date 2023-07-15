@@ -1,6 +1,7 @@
 # Microservices Application with Go and React
 
-This is a microservices-based application that consists of a backend written in Go and a frontend written in React. The application generates a random ID on the frontend, sends it to the backend, which queries the PokeAPI using that ID to retrieve a Pokemon's name and picture. The retrieved information is then sent back to the frontend for display. The communication between the frontend and backend is done through HTTP, with the backend listening on port 8080.
+This is a microservices-based application that consists of a backend written in Go and a frontend written in React. It shows a random Pokémon.
+The application generates a random ID on the frontend, sends it to the backend, which queries the PokeAPI using that ID to retrieve a Pokemon's name and picture. The retrieved information is then sent back to the frontend for display. The communication between the frontend and backend is done through HTTP, with the backend listening on port 8080.
 
 ## Application Flow
 
