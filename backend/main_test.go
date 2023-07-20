@@ -6,7 +6,7 @@ import (
 )
 
 func TestFetchPokemonID(t *testing.T) {
-	res, err := FetchPokemonID("")
+	res, err := FetchPokemonID("6")
 	if err != nil {
 		t.Errorf("Error fetching pokemon: %v", err)
 	}
