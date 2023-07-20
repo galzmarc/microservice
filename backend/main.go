@@ -25,7 +25,7 @@ type Pokemon struct {
 	} `json:"types"`
 }
 
-func fetchPokemonID(pokemonID string) (*http.Response, error) {
+func FetchPokemonID(pokemonID string) (*http.Response, error) {
 	var url string = "https://pokeapi.co/api/v2/pokemon/" + pokemonID
 	res, err := http.Get(url)
 	if err != nil {
@@ -34,7 +34,7 @@ func fetchPokemonID(pokemonID string) (*http.Response, error) {
 	return res, nil
 }
 
-func fetchPokemon(res *http.Response) (*Pokemon, error) {
+func FetchPokemon(res *http.Response) (*Pokemon, error) {
 	var pokemon Pokemon
 	err := json.NewDecoder(res.Body).Decode(&pokemon)
 	if err != nil {
@@ -53,14 +53,14 @@ func main() {
 		enableCors(w)
 
 		pokemonID := r.URL.Path[1:]
-		res, err := fetchPokemonID(pokemonID)
+		res, err := FetchPokemonID(pokemonID)
 		if err != nil {
 			log.Println(err)
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 			return
 		}
 
-		pokemon, err := fetchPokemon(res)
+		pokemon, err := FetchPokemon(res)
 		if err != nil {
 			log.Println(err)
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
